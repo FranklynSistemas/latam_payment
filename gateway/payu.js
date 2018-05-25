@@ -290,6 +290,7 @@ module.exports.sale = function(payload, credentials, type, cb) {
 			},
 			body: body
 		}, function(error, response, body) {
+			console.log('Error: ', JSON.stringify(error), ' Response:  ', JSON.stringify(response), ' Body: ' JSON.stringify(body));
 			if (body && body.transactionResponse && body.transactionResponse.state === 'APPROVED') {
 				body.transactionResponse.captured = (type === "AUTHORIZATION_AND_CAPTURE");
 				return cb(error, body.transactionResponse);
